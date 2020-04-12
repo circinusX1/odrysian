@@ -1,7 +1,7 @@
 # odrysian
 GPS TIME SERVER
 
-I used a nano po neo with OLED hat for this
+#### I used a Nano-Π Neo with OLED hat for this
 
 
 [![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_1.png)
@@ -15,10 +15,10 @@ Wired to any UART GPS module. I has this hanging over.
 [![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
 
 
-I am using libSSD1306 with some changes. 
+#### I am using libSSD1306 with some changes. 
 
     - cd libSSD1306/build and cmake . and make to get the tempprint  binary 
-    - cd gpsread and make gpsdread
+    - cd gpsread and make gpsdread (I wrote this)
     - there is a service in /etc.init.d/ folder. Tweak it and install it to run the files from dot.run
     - Theak also the dot.run  scripts to run the temprint and gpsread from where you put them.
         - install gpsd and ntp
