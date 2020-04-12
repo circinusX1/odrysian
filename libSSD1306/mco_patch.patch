@@ -1,0 +1,101 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 930b7fe..8fea5cb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+ 
++add_definitions(-Dcimg_display=0 -Dcimg_use_jpeg)
++
+ #--------------------------------------------------------------------------
+ 
+ add_library(SSD1306 STATIC lib/FileDescriptor.cxx
+@@ -34,6 +36,9 @@ target_link_libraries(clock SSD1306)
+ add_executable(ipaddress examples/ipaddress.cxx examples/LinuxKeys.cxx)
+ target_link_libraries(ipaddress SSD1306)
+ 
++add_executable(tempprint examples/tempprint.cxx examples/LinuxKeys.cxx)
++target_link_libraries(tempprint SSD1306)
++
+ add_executable(life examples/life.cxx examples/LinuxKeys.cxx)
+ target_link_libraries(life SSD1306)
+ 
+diff --git a/examples/analog.cxx b/examples/analog.cxx
+index e1fed84..f7ceb93 100644
+--- a/examples/analog.cxx
++++ b/examples/analog.cxx
+@@ -158,7 +158,7 @@ main()
+ 
+         SSD1306::OledBitmap<64, 64> bitmap;
+         SSD1306::OledPoint offset{32, 0};
+-        SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++        SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+ 
+         while (run)
+         {
+diff --git a/examples/clock.cxx b/examples/clock.cxx
+index 94a5d08..914d24d 100644
+--- a/examples/clock.cxx
++++ b/examples/clock.cxx
+@@ -133,7 +133,7 @@ main()
+             }
+         }
+ 
+-        SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++        SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+ 
+         while (run)
+         {
+diff --git a/examples/ipaddress.cxx b/examples/ipaddress.cxx
+index 2af0e30..2502787 100644
+--- a/examples/ipaddress.cxx
++++ b/examples/ipaddress.cxx
+@@ -155,7 +155,7 @@ main()
+             }
+         }
+ 
+-        SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++        SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+ 
+         while (run)
+         {
+diff --git a/examples/life.cxx b/examples/life.cxx
+index ca742c7..2da44b4 100644
+--- a/examples/life.cxx
++++ b/examples/life.cxx
+@@ -220,7 +220,7 @@ main()
+             }
+         }
+ 
+-       SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++       SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+ 
+         Bitmap pixels;
+ 
+diff --git a/examples/testbitmap.cxx b/examples/testbitmap.cxx
+index ba2d334..44a499a 100644
+--- a/examples/testbitmap.cxx
++++ b/examples/testbitmap.cxx
+@@ -61,7 +61,7 @@ main()
+              0b00000000, 0b00000000
+         };
+ 
+-        SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++        SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+ 
+         for (auto y = -(bitmap.height() / 2) ;
+              y < (oled.height() + (bitmap.height() / 2)) ;
+diff --git a/examples/testoled.cxx b/examples/testoled.cxx
+index cba0723..4e45ea4 100644
+--- a/examples/testoled.cxx
++++ b/examples/testoled.cxx
+@@ -39,7 +39,7 @@ main()
+ {
+     try
+     {
+-        SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
++        SSD1306::OledI2C oled{"/dev/i2c-0", 0x3C};
+         drawString8x16(SSD1306::OledPoint{32, 24},
+                        "Oled I" "\xFD" "C",
+                        SSD1306::PixelStyle::Set,

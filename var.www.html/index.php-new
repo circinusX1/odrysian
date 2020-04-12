@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * Based on Raspbian WiFi Configuration Portal
+ *
+ * Enables use of simple web interface rather than SSH to control wifi and hostapd on the Raspberry Pi.
+ * Recommended distribution is Raspbian Server Edition. Specific instructions to install the supported software are
+ * in the README and original post by @SirLagz. For a quick run through, the packages required for the WebGUI are:
+ * lighttpd (I have version 1.4.31-2 installed via apt)
+ * php5-cgi (I have version 5.4.4-12 installed via apt)
+ * along with their supporting packages, php5 will also need to be enabled.
+ * 
+ * @author     Lawrence Yau <sirlagz@gmail.com>
+ * @author     Bill Zimmerman <billzimmerman@gmail.com>
+ * @license    GNU General Public License, version 3 (GPL-3.0)
+ * @version    1.3.1
+ * @link       https://github.com/billz/raspap-webgui
+ * @see        http://sirlagz.net/2013/02/08/raspap-webgui/
+ */
+
+session_start();
+
+include_once( 'includes/config.php' );
+include_once( RASPI_CONFIG.'/raspap.php' );
+include_once( 'includes/locale.php');
+include_once( 'includes/functions.php' );
+include_once( 'includes/dashboard.php' );
+include_once( 'includes/authenticate.php' );
+include_once( 'includes/admin.php' );
+include_once( 'includes/dhcp.php' );
+include_once( 'includes/hostapd.php' );
+include_once( 'includes/system.php' );
+include_once( 'includes/configure_client.php' );
+include_once( 'includes/networking.php' );
+include_once( 'includes/themes.php' );
+include_once( 'includes/data_usage.php' );
+include_once( 'includes/gpsd.php' );
+
+$output = $return = 0;
+if(isset($_GET['page']))
+    $page = $_GET['page'];
+else
+    $page = "gpsd";
+
+if (empty($_SESSION['csrf_token'])) {
+    if (function_exists('mcrypt_create_iv')) {
+        $_SESSION['csrf_token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+    } else {
+        $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(32));
+    }
+}
+$csrf_token = $_SESSION['csrf_token'];
+
+?><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>"Odrysian GPS Time Server. v-1.0.0"</title>
+
+  <link href="ovendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="ovendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="ovendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="/css/s2w.css" rel="stylesheet">
+  <link href="/css/switch.css" rel="stylesheet">
+  <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+
+
+
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    
+<?php
+    include "./_body.php";
+/*
+           <img style='float:right;' src='img/plw.jpg' id='plw' width='48px' /><div id='sndoff' hidden/>
+                <div id="gpsd" class="fa fa-rocket fa-fw"> <?php echo _("G P S"); ?></div>
+                <div id="ntp" class="fa  fa-clock-o fa-fw"> <?php echo _("NTP Status"); ?></div>
+                <div id="nmap" class="fa fa-sitemap fa-fw"> <?php echo _("NET Status"); ?></div>
+                <div id="wpa_conf" class="fa fa-signal fa-fw"> <?php echo _("Configure WiFi client"); ?></div>
+                <div id="hostapd_conf" class="fa fa-dot-circle-o fa-fw"> <?php echo _("Configure hotspot"); ?></div>
+	             <div id="network_conf" class="fa fa-sitemap fa-fw"> <?php echo _("Configure networking"); ?></div>
+                <div id="dhcpd_conf" class="fa fa-exchange fa-fw"> <?php echo _("Configure DHCP Server"); ?></div>
+                <div id="openvpn_conf" class="fa fa-lock fa-fw"> <?php echo _("Configure OpenVPN"); ?></div>
+                 <div id="torproxy_conf" class="fa fa-eye-slash fa-fw"> <?php echo _("Configure TOR proxy"); ?></div>
+                <div id="auth_conf" class="fa fa-lock fa-fw"> <?php echo _("Configure Auth"); ?></div>
+                <div id="theme_conf" class="fa fa-wrench fa-fw"> <?php echo _("Change Theme"); ?></div>
+                <div id="data_use" class="fa fa-bar-chart fa-fw"> <?php echo _("Data usage"); ?></div>
+                <div id="system_info" class="fa fa-cube fa-fw"> <?php echo _("System"); ?></div>
+           DisplayDashboard();
+            displaygpsd();
+            displaynmap();
+            displayntp();
+            DisplayDHCPConfig();
+            DisplayWPAConfig();
+            DisplayNetworkingConfig();
+            DisplayHostAPDConfig();
+            DisplayOpenVPNConfig();
+            DisplayTorProxyConfig();
+            DisplayAuthConfig($config['admin_user'], $config['admin_pass']);
+            SaveTORAndVPNConfig();
+            DisplayThemeConfig();
+            DisplayDataUsage($extraFooterScripts);
+            DisplaySystem();
+            DisplayDashboard();
+*/
+?>
+
+
+  </body>
+  <!-- RaspAP JavaScript -->
+    <script src="dist/js/functions.js"></script>
+
+    <script src="ovendor/jquery/jquery.min.js"></script>
+    <script src="ovendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  
+    <!-- Custom RaspAP JS -->
+    <script src="js/custom.js"></script>
+<?php
+// Load non default JS/ECMAScript in footer.
+foreach ($extraFooterScripts as $script) {
+    echo '    <script type="text/javascript" src="' , $script['src'] , '"';
+    if ($script['defer']) {
+        echo ' defer="defer"';
+    }
+    // if ($script['async']) { echo ( echo ' defer="async"'; ), intrigity=, nonce=  etc. etc.
+    echo '></script>' , PHP_EOL;
+}
+
+?>
+</html>
+
+
+  
+

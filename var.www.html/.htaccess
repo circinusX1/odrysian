@@ -1,0 +1,5 @@
+AuthName "Odrisyan Portal"
+AuthUserFile /etc/raspap/.htpasswd
+Require valid-user
+
+
