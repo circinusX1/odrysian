@@ -6,16 +6,16 @@ GPS TIME SERVER
 
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_1.png)
 
-Then a USB to UART adapeter I had around
+##### Then a USB to UART adapeter
 
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_2.png)
 
-Wired to any UART GPS module. I has this hanging over.
+##### Wired to any UART GPS module
 
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
 
 
-#### I am using libSSD1306 with some changes. 
+#### I am using libSSD1306 with some changes for oled hat to get around python shit. 
 
     - cd libSSD1306/build and cmake . and make to get the tempprint  binary 
     - cd gpsread and make gpsdread (I wrote this)
@@ -28,7 +28,8 @@ Wired to any UART GPS module. I has this hanging over.
         - copy the /var.www.html to /var/www/html folder
         - add following to visudo
         
-        
+
+
 ```bash
 www-data ALL=(ALL) NOPASSWD:/sbin/iwconfig
 www-data ALL=(ALL) NOPASSWD:/sbin/ifdown
@@ -50,7 +51,9 @@ www-data ALL=(ALL) NOPASSWD:/sbin/ip
 www-data ALL=(ALL) NOPASSWD:/sbin/iwlist
 www-data ALL=(ALL) NOPASSWD:/sbin/iw
 ```
-    - Here is the interface. I used https://github.com/billz/raspap-webgui as a template and some borrowed scripts
+    - For web interface I used https://github.com/billz/raspap-webgui
+    - There were chnages to it.
+    - I configured ntp on all machine in the net to use the Nano-PI Neo IP as one of the NTP servers.
     
     
 ### The satelites map
