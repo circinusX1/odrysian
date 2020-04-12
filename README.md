@@ -4,15 +4,15 @@ GPS TIME SERVER
 #### I used a Nano-Π Neo with OLED hat for this
 
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_1.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_1.png)
 
 Then a USB to UART adapeter I had around
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_2.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_2.png)
 
 Wired to any UART GPS module. I has this hanging over.
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
 
 
 #### I am using libSSD1306 with some changes. 
@@ -55,15 +55,15 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
     
 ### The satelites map
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_4.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_4.png)
 
 ### The ntp status
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_5.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_5.png)
 
 ### The local network IP's
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_6.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_6.png)
     
     
     - Web interface: last 3 options are non-functional
