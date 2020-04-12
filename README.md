@@ -55,15 +55,15 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
     
 ### The satelites map
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_4.png)]
+[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_4.png)]
 
 ### The ntp status
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_5.png)]
+[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_5.png)]
 
 ### The local network IP's
 
-[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_6.png)]
+[![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_6.png)]
     
 
 
