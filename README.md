@@ -15,7 +15,7 @@ GPS TIME SERVER
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
 
 
-#### I am using libSSD1306 with some changes for oled hat to get around python shit. 
+#### I am using libSSD1306 with some changes for oled hat to get around python. 
 
     - cd libSSD1306/build and cmake . and make to get the tempprint  binary 
     - cd gpsread and make gpsdread (I wrote this)
@@ -54,6 +54,10 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
     - For web interface I used https://github.com/billz/raspap-webgui
     - There were chnages to it.
     - I configured ntp on all machine in the net to use the Nano-PI Neo IP as one of the NTP servers.
+    - Time is in sync.
+    
+
+![Time drift](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_7.png)
     
     
 ### The satelites map
