@@ -4,15 +4,15 @@ GPS TIME SERVER
 #### I used a Nano-Π Neo with OLED hat for this
 
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_1.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odr_1.png)
 
 ##### Then a USB to UART adapeter
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_2.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odr_2.png)
 
 ##### Wired to any UART GPS module
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odr_3.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odr_3.png)
 
 
 #### I am using libSSD1306 with some changes for oled hat to get around python. 
@@ -57,20 +57,20 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
     - Time is in sync.
     
 
-![Time drift](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_7.png)
+![Time drift](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_7.png)
     
     
 ### The satelites map
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_4.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_4.png)
 
 ### The ntp status
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_5.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_5.png)
 
 ### The local network IP's
 
-![Nano Pi Neo Hat](https://raw.githubusercontent.com/comarius/odrysian/master/docs/odry_6.png)
+![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_6.png)
     
     
     - Web interface: last 3 options are non-functional
