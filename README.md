@@ -72,16 +72,9 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
 
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_6.png)
     
-    
-    - Web interface: last 3 options are non-functional
 
 
-Published during covid19 days.
 
-
-#### You can buy a ready SD card from [HERE](https://www.redypis.org/?pd=18)
-
-    * Web interface: last 3 options are non-functional
 
 
 
