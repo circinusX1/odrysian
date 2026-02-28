@@ -73,6 +73,10 @@ www-data ALL=(ALL) NOPASSWD:/sbin/iw
 ![Nano Pi Neo Hat](https://raw.githubusercontent.com/circinusX1/odrysian/master/docs/odry_6.png)
     
 
+-- --
+
+
+
 
 
 ### P.S.
